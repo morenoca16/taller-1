@@ -7,8 +7,7 @@ for i in range(0,n):
     i=i+1
     prom=sum(nums)/ len (nums)
     nums.append(val)
-    promedio=i/len(nums)
-print('el promedio que dio fue: ',promedio)
+print('el promedio que dio fue: ',prom)
 if prom<3.0:
     print=("Reprobaste")
 elif prom <=4.0:
