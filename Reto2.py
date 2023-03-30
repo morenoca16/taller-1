@@ -1,37 +1,30 @@
-from Reto2 import Persona
+from Reto1 import Persona
 
-class empleado(Persona):
-    # atributos
-    def __init__(self,cargo,valHora,horasTra,depa):
-        self.cargo=cargo
-        self.valHora=valHora
-        self.horasTra=horasTra
-        self.depa=depa
-        self.pagoEmpleado=self.calcularHorarios()
-
+class Empleado(Persona):
     def __init__(self):
-        self.empleado1 = empleado("", "", "", "", 0, 0, 0, "","",0,0,"",0)
+        super().__init__()
+        self.cargo = ""
+        self.valorhora = 0.0
+        self.horastrabajadas = 0
+        self.departamento = ""
 
-    # metodos
     def pedirDatos(self):
-        self.tipoDoc=input('ingrese el tipo de documento del empleado: ')
-        self.documento=input('ingrese el numero: ')
-        self.nombre=input('ingrese el nombre: ')
-        self.apellido=input('ingrese el apellido: ')
-        self.peso=float(input('ingrese su peso en kg: '))
-        self.estatura=float(input('ingrese su altura en mts: '))
-        self.edad=int(input('ingrese su edad: '))
-        self.sexo=input('indique su sexo: ')
-        self.cargo=input('indique el cargo del empleado: ')
-        self.valHora=float(input('ingrese cuanto va a pagarle al empleado por hora: '))
-        self.horasTraba=float(input('ingrese las horas que trabajo el empleado: '))
-        self.depar=input('indique el departamento del empleado: ')
+        super().pedirDatos()
+        self.cargo = input("Cargo: ")
+        self.valorhora = float(input("Valor por hora: "))
+        self.horastrabajadas = int(input("Horas trabajadas: "))
+        self.departamento = input("Departamento: ")
+        print("\n")
 
-    def calcularHorarios(self):
-        valTotal = self.valHora * self.horasTraba
-        reteica = valTotal * 0.00966
-        honorarios = valTotal - reteica
+    def calcularHonorarios(self):
+        total = self.valorhora * self.horastrabajadas
+        reteica = total * 0.00966
+        honorarios = total - reteica
         return honorarios
-    
-    def mostrarEmpleado(self):
-        print(f'\n {self.tipoDoc} \n{self.nombre} \n{self.apellido} \n{self.cargo} \n{self.horasTraba} \n{self.valHora} \n{self.pagoEmpleado}')
+
+    def imprimirEmpleado(self):
+        print(f'Tipo de documento: {self.tipoDoc} \nNumero de documento: {self.documento} \nNombre: {self.nombre}\nApellido: {self.apellido}\ncargo: {self.cargo}\nHoras trabajadas: {self.horastrabajadas}\nValor por hora: {self.valorhora}\nTotal a pagar: {self.calcularHonorarios()}')
+        
+empleado = Empleado()
+empleado.pedirDatos()
+empleado.imprimirEmpleado()
